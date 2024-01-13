@@ -206,11 +206,11 @@ void displayNamesFromLoginFile() {
     }
 
     while (fscanf(file, "%s %s  %c", user,pes,&k) == 3) {
-        printf("Nom de compte : %s\n", user);
+        printf("Account name: %s\n", user);
     }
 
     fclose(file);
-    printf("donne le nom de compte pour valide:");
+    printf("Enter the account name for validation:");
     scanf("%s",usrname);
      FILE *fil = fopen("login.txt", "r+");
      if (fil == NULL) {
@@ -222,7 +222,7 @@ void displayNamesFromLoginFile() {
             fseek(file, -1, SEEK_CUR); 
             fprintf(file, "V");
 
-            printf("Le compte '%s' a ete valide avec succes.\n", usrname);
+            printf("The account '%s' has been successfully validated.\n", usrname);
             fclose(fil);
         }
     }
@@ -248,13 +248,13 @@ void admin(){
         printf("____________________________________\n");
         printf(" 5- delete a contact \n");
         printf("____________________________________\n");
-        printf(" 6- pour veuille les information \n");
+        printf(" 6- To secure the information: \n");
         printf("____________________________________\n");
         printf(" 7- quit \n");
         printf("____________________________________\n");
-        printf(" 8- returne au menu \n");
+        printf(" 8- Return to the menu \n");
         printf("____________________________________\n");
-        printf(" 9- pour valide les comptes \n");
+        printf(" 9- Validate accounts \n");
         printf("____________________________________\n");
 
 
@@ -292,9 +292,9 @@ void admin(){
             break;
         case 6: {
             printf("____________________________________\n");
-            printf(" 1- pour securise les information \n");
+            printf(" 1- To secure the information: \n");
             printf("____________________________________\n");
-            printf(" 2- pour que les autre compte peut voir les information \n");
+            printf(" 2- To allow other accounts to view the information: \n");
             printf("____________________________________\n");
             printf("choose a choice from 1 ou 2 : ");
             scanf("%d",&sec);
@@ -375,10 +375,10 @@ void compte(){
     char name[30],mot[30],H;
     FILE* login_file;
      printf("____________________________________\n");
-     printf("  saiser le nom \n");
+     printf("  Enter the name: \n");
      scanf("%s", k);
      printf("____________________________________\n");
-     printf("  saiser le mote de passe \n");
+     printf("  Enter the password: \n");
      scanf("%s", F);
      login_file = fopen("login.txt", "r");
      if (login_file == NULL) {
@@ -388,7 +388,7 @@ void compte(){
 
      while (fscanf(login_file, "%s %s %c", name, mot, &H) == 3) {
         if (strcmp(k, name) == 0) {
-            printf("Le nom '%s' existe deja. Choisissez un autre nom.\n", k);
+            printf("The name '%s' already exists. Please choose another name.\n", k);
             fclose(login_file);
             return;
         }
@@ -410,9 +410,9 @@ void login(){
         printf("____________________________________\n");
         printf(" 1- admin \n");
         printf("____________________________________\n");
-        printf(" 2- autre \n");
+        printf(" 2- others \n");
         printf("____________________________________\n");
-        printf(" 3-cree compte pour autre \n");
+        printf(" 3-Create an account for others \n");
         printf("____________________________________\n");
         while(1){
         printf("choose a choice from 1 to 3 : ");
@@ -422,7 +422,7 @@ void login(){
         {
         case 1: while (1) {
         printf("____________________________________\n");
-        printf("  saiser le mote de passe \n");
+        printf("  Enter the password: \n");
         scanf("%d",&c);
         if(c==0000){
             admin();
@@ -435,10 +435,10 @@ void login(){
             break;
         case 2:
         printf("____________________________________\n");
-        printf("  Saisir le nom :\n");
+        printf("  Enter the name:\n");
         scanf("%s", k);
         printf("____________________________________\n");
-        printf("  Saisir le mot de passe :\n");
+        printf("  Enter the password:\n");
         scanf("%s", F);
 
         FILE *login_file = fopen("login.txt", "r");
@@ -467,16 +467,16 @@ void login(){
             fclose(valeur);
             if(sec==1)
             {
-             printf("  imposible admin a veruielle\n"); 
+             printf("  Admin secures the information.\n"); 
             }
             else{
                 if (valide == 'V') {
-                 printf("Authentification reussie admin a valide votre compte.\n");
+                 printf("Authentication successful, admin has validated your account.\n");
                  autre();
                 }
                 
                 else if (valide == 'F') {
-                 printf("Authentification reussie mais admin ne valide pas ce compte.\n");
+                 printf("Authentication successful, but admin has not validated this account.\n");
                  login();
                 }
             }  
